@@ -1,0 +1,35 @@
+GET http://localhost:3001/api/blogs
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjMsInVzZXJuYW1lIjoic2FqYW5pQGdtYWlsLmNvbSIsImlhdCI6MTY0NDk2Mzc0OH0.RXROCoXGOM7vy_ozD8rBRVo1hzpdYT1caVv8Jh4HTTQ
+
+
+###
+GET http://localhost:3001/api/blogs/6
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTksInVzZXJuYW1lIjoic2FqYW5pNSIsImlhdCI6MTY0NDk2MzA1M30.InF-fJfP6Iz22bsXTHks2N8iB3rdYzaNHvZgqGdESVE
+
+
+###
+POST http://localhost:3001/api/blogs
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjIsInVzZXJuYW1lIjoic3VuZGVzekBnbWFpbC5jb20iLCJpYXQiOjE2NDQ5NjQwMjV9.XdQF9AdERmIKXSBPQqEKNa8swTOdk0LKNYGYlorOlw4
+content-type: application/json
+
+{
+  "author": "Sajani Karmacharya Sandesh",
+  "url": "http://sajani-karmacharya.com",
+  "title": "Sajani Blog sajani@gmail.com sandesh",
+  "likes": 35
+}
+
+###
+PUT http://localhost:3001/api/blogs/8
+Content-Type: application/json
+ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjMsInVzZXJuYW1lIjoic2FqYW5pQGdtYWlsLmNvbSIsImlhdCI6MTY0NDk2Mzc0OH0.RXROCoXGOM7vy_ozD8rBRVo1hzpdYT1caVv8Jh4HTTQ
+// Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTksInVzZXJuYW1lIjoic2FqYW5pNSIsImlhdCI6MTY0NDk2MzU2MH0.6afjxcLvvfMbEXQmmqqpC9ENhZw8-qvYdQtLU8UXMYc
+
+{
+  "likes": "5"
+}
+
+
+###
+DELETE http://localhost:3001/api/blogs/7
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjMsInVzZXJuYW1lIjoic2FqYW5pQGdtYWlsLmNvbSIsImlhdCI6MTY0NDk2MzQxNX0.y72543nGsoo0RHc8iev8TF0F-qDB9H11MAOR1CGIs6U

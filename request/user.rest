@@ -1,0 +1,27 @@
+GET http://localhost:3001/api/users
+
+
+
+
+###
+GET http://localhost:3001/api/users/sundesz@gmail.com
+
+
+###
+POST http://localhost:3001/api/users
+content-type: application/json
+
+{
+  "name": "sajani 8",
+  "username": "sajani@gmail.com",
+  "password": "sajani"
+}
+
+###
+POST http://localhost:3001/api/login
+Content-Type: application/json
+
+{
+  "username": "sundesz@gmail.com",
+  "password": "sandesh"
+}
