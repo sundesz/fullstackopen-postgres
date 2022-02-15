@@ -1,10 +1,13 @@
 GET http://localhost:3001/api/blogs
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjMsInVzZXJuYW1lIjoic2FqYW5pQGdtYWlsLmNvbSIsImlhdCI6MTY0NDk2Mzc0OH0.RXROCoXGOM7vy_ozD8rBRVo1hzpdYT1caVv8Jh4HTTQ
+
+
+###
+GET http://localhost:3001/api/blogs?search=sandesh
 
 
 ###
 GET http://localhost:3001/api/blogs/6
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTksInVzZXJuYW1lIjoic2FqYW5pNSIsImlhdCI6MTY0NDk2MzA1M30.InF-fJfP6Iz22bsXTHks2N8iB3rdYzaNHvZgqGdESVE
+
 
 
 ###
@@ -13,9 +16,9 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjIsInVzZXJuY
 content-type: application/json
 
 {
-  "author": "Sajani Karmacharya Sandesh",
+  "author": "sandesh ",
   "url": "http://sajani-karmacharya.com",
-  "title": "Sajani Blog sajani@gmail.com sandesh",
+  "title": "sajani",
   "likes": 35
 }
 

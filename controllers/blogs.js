@@ -1,19 +1,34 @@
+const { Op } = require('sequelize')
+const { tokenExtractor } = require('../middleware')
 const blogRouter = require('express').Router()
-
 const { Blog, User } = require('../models')
 
 blogRouter.get('/', async (req, res, next) => {
   try {
+    let where = {}
+
+    if (req.query.search) {
+      where = {
+        [Op.or]: [
+          { title: { [Op.iLike]: `%${req.query.search}%` } },
+          { author: { [Op.iLike]: `%${req.query.search}%` } },
+        ],
+      }
+    }
+
     const blogs = await Blog.findAll({
       attributes: { exclude: ['userId'] },
       include: {
         model: User,
         attributes: ['name'],
       },
+      where,
+      order: [['likes', 'desc']],
     })
+
+    res.json(blogs)
     // console.log(blogs.map((b) => b.toJSON()))
     // console.log(JSON.stringify(blogs, null, 2))
-    res.json(blogs)
   } catch (error) {
     next(error)
   }
@@ -33,12 +48,12 @@ blogRouter.get('/:id', async (req, res, next) => {
   res.status(404).send({ error: 'Id not found' })
 })
 
-blogRouter.post('/', async (req, res, next) => {
+blogRouter.post('/', tokenExtractor, async (req, res, next) => {
   const blog = await Blog.create({ ...req.body, userId: req.decodedToken.id })
   return res.json(blog)
 })
 
-blogRouter.put('/:id', async (req, res, next) => {
+blogRouter.put('/:id', tokenExtractor, async (req, res, next) => {
   const blog = await Blog.findOne({
     attributes: { exclude: ['userId'] },
     where: { id: req.params.id, userId: req.decodedToken.id },
@@ -54,7 +69,7 @@ blogRouter.put('/:id', async (req, res, next) => {
   res.status(404).send({ error: 'Id not found' })
 })
 
-blogRouter.delete('/:id', async (req, res, next) => {
+blogRouter.delete('/:id', tokenExtractor, async (req, res, next) => {
   const blog = await Blog.findOne({
     where: { userId: req.decodedToken.id },
   })
