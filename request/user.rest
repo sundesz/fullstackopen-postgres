@@ -12,9 +12,9 @@ POST http://localhost:3001/api/users
 content-type: application/json
 
 {
-  "name": "sajani 8",
-  "username": "sajani@gmail.com",
-  "password": "sajani"
+  "name": "Sandesh Hyoju",
+  "username": "sundesz@gmail.com",
+  "password": "sandesh"
 }
 
 ###

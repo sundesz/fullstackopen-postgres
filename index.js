@@ -1,12 +1,14 @@
 require('dotenv').config()
 
 const express = require('express')
-const authorRouter = require('./controllers/authors')
 require('express-async-errors')
+const authorRouter = require('./controllers/authors')
 const blogRouter = require('./controllers/blogs')
 const loginRouter = require('./controllers/login')
 const userRouter = require('./controllers/users')
 const { unknownEndpoint, errorHandler } = require('./middleware')
+const { PORT } = require('./util/config')
+const { connectToDatabase } = require('./util/db')
 
 const app = express()
 app.use(express.json())
@@ -22,7 +24,11 @@ app.use('/api/login', loginRouter)
 app.use(unknownEndpoint)
 app.use(errorHandler)
 
-const PORT = process.env.PORT || 3001
-app.listen(PORT, () => {
-  console.log('listening on port ', PORT)
-})
+const start = async () => {
+  await connectToDatabase()
+  app.listen(PORT, () => {
+    console.log('listening on port ', PORT)
+  })
+}
+
+start()

@@ -14,12 +14,12 @@ loginRouter.post('/', async (req, res) => {
   })
 
   if (!user || !req.body.password) {
-    return res.status(400).send({ error: 'Invalid username or password' })
+    return res.status(401).send({ error: 'Invalid username or password' })
   }
 
-  const password = bcrypt.compare(req.body.password, user.passwordHash)
+  const password = await bcrypt.compare(req.body.password, user.passwordHash)
   if (!password) {
-    return res.status(400).send({ error: 'Invalid username or password' })
+    return res.status(401).send({ error: 'Invalid username or password' })
   }
 
   const dataForToken = {

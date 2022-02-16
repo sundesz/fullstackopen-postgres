@@ -12,24 +12,24 @@ GET http://localhost:3001/api/blogs/6
 
 ###
 POST http://localhost:3001/api/blogs
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjIsInVzZXJuYW1lIjoic3VuZGVzekBnbWFpbC5jb20iLCJpYXQiOjE2NDQ5NjQwMjV9.XdQF9AdERmIKXSBPQqEKNa8swTOdk0LKNYGYlorOlw4
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJzYWphbmlAZ21haWwuY29tIiwiaWF0IjoxNjQ0OTcwMzI0fQ.7NgrtnoQe1giVoPVQlj9C1gEB7pUclMkekwAqZjLnPM
 content-type: application/json
 
 {
-  "author": "sandesh ",
+  "author": "Sajani Karmacharya",
   "url": "http://sajani-karmacharya.com",
-  "title": "sajani",
-  "likes": 35
+  "title": "Sajani second blog",
+  "likes": 5,
+  "year": "2022"
 }
 
 ###
-PUT http://localhost:3001/api/blogs/8
+PUT http://localhost:3001/api/blogs/2
 Content-Type: application/json
- Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjMsInVzZXJuYW1lIjoic2FqYW5pQGdtYWlsLmNvbSIsImlhdCI6MTY0NDk2Mzc0OH0.RXROCoXGOM7vy_ozD8rBRVo1hzpdYT1caVv8Jh4HTTQ
-// Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTksInVzZXJuYW1lIjoic2FqYW5pNSIsImlhdCI6MTY0NDk2MzU2MH0.6afjxcLvvfMbEXQmmqqpC9ENhZw8-qvYdQtLU8UXMYc
+ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJzYWphbmlAZ21haWwuY29tIiwiaWF0IjoxNjQ0OTcwMzI0fQ.7NgrtnoQe1giVoPVQlj9C1gEB7pUclMkekwAqZjLnPM
 
 {
-  "likes": "5"
+  "likes": "55"
 }
 
 
