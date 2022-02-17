@@ -4,7 +4,8 @@ GET http://localhost:3001/api/users
 
 
 ###
-GET http://localhost:3001/api/users/sundesz@gmail.com
+GET http://localhost:3001/api/users/2?read=true
+
 
 
 ###

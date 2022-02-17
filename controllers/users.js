@@ -15,14 +15,27 @@ userRouter.get('/', async (req, res) => {
   res.json(users)
 })
 
-userRouter.get('/:username', async (req, res) => {
-  const user = await User.findOne({
-    attributes: { exclude: ['passwordHash'] },
-    where: { username: req.params.username },
-    include: {
-      model: Blog,
-      attributes: ['id', 'author', 'title', 'url', 'likes'],
-    },
+userRouter.get('/:id', async (req, res) => {
+  const where = {}
+
+  if (req.query.read) {
+    where.readState = req.query.read === 'true' ? 'read' : 'unread'
+  }
+
+  const user = await User.findByPk(req.params.id, {
+    attributes: ['name', 'username'],
+    include: [
+      {
+        model: Blog,
+        as: 'readings',
+        attributes: { exclude: ['createdAt', 'updatedAt', 'userId'] },
+        through: {
+          as: 'readinglists',
+          attributes: ['readState', 'id'],
+          where,
+        },
+      },
+    ],
   })
 
   if (user) {

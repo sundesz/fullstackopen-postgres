@@ -1,0 +1,19 @@
+POST http://localhost:3001/api/readinglists
+Content-Type: application/json
+
+{
+  "blogId": "2",
+  "userId": "2"
+}
+
+###
+PUT http://localhost:3001/api/readinglists/2
+Content-Type: application/json
+//sandesh
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJzdW5kZXN6QGdtYWlsLmNvbSIsImlhdCI6MTY0NTA1NTI1M30.c4w3VEL0rikWFLB6_DHx3f5y4S8hXKEuSYfI9foNoMg
+//sajani
+//Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJzYWphbmlAZ21haWwuY29tIiwiaWF0IjoxNjQ1MDU1MTAwfQ.X2C1bXyM_YfGQVSyQH5iu_LBNGVV3RO95BhkeoxVGbs
+
+{
+  "read": "true"
+}
