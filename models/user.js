@@ -40,6 +40,11 @@ User.init(
     underscored: true,
     timestamps: true,
     modelName: 'user',
+    // defaultScope: {
+    //   where: {
+    //     disabled: false,
+    //   },
+    // },
   }
 )
 

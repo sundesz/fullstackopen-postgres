@@ -26,3 +26,18 @@ Content-Type: application/json
   "username": "sundesz@gmail.com",
   "password": "sandesh"
 }
+
+###
+POST http://localhost:3001/api/logout
+Authorization: Bearer
+
+
+###
+PUT http://localhost:3001/api/users
+Content-Type: application/json
+Authorization: Bearer
+
+{
+  "userId": 1,
+  "disabled": false
+}

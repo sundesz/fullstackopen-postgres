@@ -1,4 +1,4 @@
-const { tokenExtractor } = require('../middleware')
+const { tokenExtractor, isValidUser } = require('../middleware')
 const { User, Blog, ReadingList } = require('../models')
 
 const readingListRouter = require('express').Router()
@@ -19,20 +19,25 @@ readingListRouter.post('/', async (req, res) => {
   res.status(404).json({ error: 'Blog or user not found' })
 })
 
-readingListRouter.put('/:blogId', tokenExtractor, async (req, res) => {
-  const readingList = await ReadingList.findOne({
-    where: { blogId: req.params.blogId, userId: req.decodedToken.id },
-  })
+readingListRouter.put(
+  '/:blogId',
+  tokenExtractor,
+  isValidUser,
+  async (req, res) => {
+    const readingList = await ReadingList.findOne({
+      where: { blogId: req.params.blogId, userId: req.decodedToken.id },
+    })
 
-  if (readingList) {
-    const readState = req.body.read === 'true' || req.body.read === true
-    readingList.readState = readState ? 'read' : 'unread'
-    await readingList.save()
+    if (readingList) {
+      const readState = req.body.read === 'true' || req.body.read === true
+      readingList.readState = readState ? 'read' : 'unread'
+      await readingList.save()
 
-    return res.json(readingList)
+      return res.json(readingList)
+    }
+
+    res.status(404).json({ error: 'Blog or user not found' })
   }
-
-  res.status(404).json({ error: 'Blog or user not found' })
-})
+)
 
 module.exports = readingListRouter

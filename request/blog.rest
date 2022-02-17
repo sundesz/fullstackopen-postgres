@@ -12,7 +12,7 @@ GET http://localhost:3001/api/blogs/6
 
 ###
 POST http://localhost:3001/api/blogs
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJzYWphbmlAZ21haWwuY29tIiwiaWF0IjoxNjQ0OTcwMzI0fQ.7NgrtnoQe1giVoPVQlj9C1gEB7pUclMkekwAqZjLnPM
+Authorization: Bearer
 content-type: application/json
 
 {
@@ -26,7 +26,7 @@ content-type: application/json
 ###
 PUT http://localhost:3001/api/blogs/2
 Content-Type: application/json
- Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJzYWphbmlAZ21haWwuY29tIiwiaWF0IjoxNjQ0OTcwMzI0fQ.7NgrtnoQe1giVoPVQlj9C1gEB7pUclMkekwAqZjLnPM
+ Authorization: Bearer
 
 {
   "likes": "55"
@@ -35,4 +35,4 @@ Content-Type: application/json
 
 ###
 DELETE http://localhost:3001/api/blogs/7
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjMsInVzZXJuYW1lIjoic2FqYW5pQGdtYWlsLmNvbSIsImlhdCI6MTY0NDk2MzQxNX0.y72543nGsoo0RHc8iev8TF0F-qDB9H11MAOR1CGIs6U
+Authorization: Bearer

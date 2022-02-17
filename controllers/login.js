@@ -1,12 +1,12 @@
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const loginRouter = require('express').Router()
-const { User, Blog } = require('../models')
+const { User, Blog, Session } = require('../models')
 const { SECRET } = require('../util/config')
 
 loginRouter.post('/', async (req, res) => {
   const user = await User.findOne({
-    where: { username: req.body.username },
+    where: { username: req.body.username, disabled: false },
     include: {
       model: Blog,
       attributes: ['id', 'author', 'title', 'url', 'likes'],
@@ -28,6 +28,18 @@ loginRouter.post('/', async (req, res) => {
   }
 
   const token = jwt.sign(dataForToken, SECRET)
+
+  const session = await Session.findOne({
+    attributes: ['id', 'token'],
+    where: { userId: user.id },
+  })
+
+  if (session) {
+    session.token = token
+    await session.save()
+  } else {
+    await Session.create({ userId: user.id, token })
+  }
 
   res.json({
     token,
